@@ -23,5 +23,6 @@ def korean_cleaners(text):
 def jk_cleaners(text):
     text = re.sub(r'\[JA\](.*?)\[JA\]', lambda x: japanese_cleaners(x.group(1))+' ', text)
     text = re.sub(r'\[KO\](.*?)\[KO\]', lambda x: korean_cleaners(x.group(1))+' ', text)
+    text = re.sub(r'\[PREPROCESSED\](.*?)\[PREPROCESSED\]', lambda x: x.group(1)+' ', text)
     text = ''.join(_cleaner_cleans.findall(text))
     return text

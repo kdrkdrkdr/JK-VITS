@@ -1,6 +1,5 @@
-from .cleaners import japanese_to_romaji_with_accent
+from .cleaners import japanese_to_romaji_with_accent, korean_cleaners
 from .korean import join_jamos
-
 
 repl_lst = {
     '.': '. ',
@@ -14,10 +13,15 @@ repl_lst = {
     'Q': ' |Q ',
     'N': ' |N ',
     'U': 'u ',
+    'I': 'i ',
+    'A': 'a ',
+    'E': 'e ',
+    'O': 'o ',
 }
 
 repl_lst2 = {
     'ʧu': '츠',
+    'tsu': '츠',
     'zu': '즈',
     'su': '스',
 
@@ -35,6 +39,7 @@ repl_lst2 = {
     's': 'ㅅ',
     'j': 'ㅈ',
     'ʧ': 'ㅊ',
+    'ts': 'ㅊ',
     'k': 'ㅋ',
     't': 'ㅌ',
     'p': 'ㅍ',
@@ -80,12 +85,13 @@ repl_lst3 = {
     '|Nㅇ': 'ㅇㅇ',
     '|Nㅎ': 'ㅇㅎ',
     
-    '|Q': 'ㅅ'
+    '|Q': 'ㅅ',
+    '|N': 'ㄴ',
 }
 
 
 def japanese2korean(text):
-    text = japanese_to_romaji_with_accent(text).strip()
+    text = japanese_to_romaji_with_accent(text).strip().replace('^', '').replace(' ', '^ ')
 
     for k, v in repl_lst.items():
         text = text.replace(k, v)
@@ -93,7 +99,11 @@ def japanese2korean(text):
         text = text.replace(k, v)
 
     text = ' '.join([i.replace('*', 'ㅇ') if i.startswith('*') else i.replace('*', '') for i in text.strip().split(' ')])
+
     for k, v in repl_lst3.items():
         text = text.replace(k, v)
 
-    return join_jamos(text.replace('  ', '_').replace(' ', ''))
+    text = join_jamos(text.replace('  ', ' ')).replace(' ', '').replace('^', ' ')
+    return f"[PREPROCESSED]{korean_cleaners(text)}[PREPROCESSED]"
+
+

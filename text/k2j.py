@@ -5,6 +5,7 @@ from .korean import (
     number_to_hangul,
     g2pk,
 )
+from .cleaners import japanese_cleaners
 import re
 import jaconv
 
@@ -47,7 +48,8 @@ def get_word_list(text):
 
 def korean2katakana(text):
     word_lst = get_word_list(text)
-    text = '/' + text.replace('/', ' ').replace('|', ' ').replace('^', ' ').replace('  ', ' ').replace(' ', '^')
+    text = '/' + text.replace('/', ' ').replace('|', ' ').replace('^', ' ').replace('  ', ' ')
+    print(text)
     new_lst = []
 
     for i, s in enumerate(word_lst):
@@ -70,17 +72,12 @@ def korean2katakana(text):
         new_lst.extend(dh)
 
     kr = ''.join(new_lst)
-    
     for k, v in repl_lst.items():
         kr = kr.replace(k, v)
-        
     kr2ro = japanese_to_romaji_with_accent(kr).replace('si', 'shi').replace('c', 'ts') \
                                               .replace('ti', 'ティ').replace('tu', 'トゥ') \
                                               .replace('di', 'ディ').replace('du', 'ドゥ')
-    result = jaconv.alphabet2kata(kr2ro)
-    result = result.replace('/', '').replace('|', 'ー').replace('^', '_')
-    print(result)
-    return result
 
-
-# print(korean2katakana("안녕하세요.")) -> アンニョンーハセヨ
+    result = jaconv.alphabet2kata(kr2ro).replace('|', 'ー').replace('/', '').replace('^', '')
+    result = result if result[-1] == '.' else result + '.'
+    return f'[PREPROCESSED]{japanese_cleaners(result).replace(" ", "")}[PREPROCESSED]'
