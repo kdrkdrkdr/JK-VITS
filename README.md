@@ -81,9 +81,19 @@ python preprocess.py --filelists filelists/train.txt filelists/val.txt
   * If you train with japanese dataset, refer [configs/ja.json](configs/ja.json)
   * If you train with korean dataset, refer [configs/ko.json](configs/ko.json)
 
-- You can download and use [pretrained_model](https://github.com/kdrkdrkdr/JK-VITS/releases).
-  * If you train with korean dataset, use korean_pretrained_dataset (Completed)
-  * If you train with japanese dataset, use japanese_pretrained_dataset (Work In Process)
+- You can download and use [pretrained_model](https://github.com/kdrkdrkdr/JK-VITS/releases) to finetuning.
+  * If you train with korean dataset, use [korean_pretrained_dataset](https://github.com/kdrkdrkdr/JK-VITS/releases/tag/korean_pretrained_model) (Completed)
+  * If you train with japanese dataset, use [japanese_pretrained_dataset](https://github.com/kdrkdrkdr/JK-VITS/releases/tag/japanese_pretrained_model) (Work In Process)
+
+- Write Transcripts.
+  * If you train with japanese dataset
+  ```
+  path/to/XXX.wav|[JA]こんいちわ。[JA]
+  ```
+  * If you train with korean dataset
+  ```
+  path/to/XXX.wav|[KO]안녕하세요.[KO]
+  ```
 
 
 ---
