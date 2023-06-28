@@ -80,10 +80,14 @@ python preprocess.py --filelists filelists/train.txt filelists/val.txt
 ```
 
 - Set configs.
-If you train with japanese dataset, refer [configs/ja.json](configs/ja.json)
-If you train with korean dataset, refer [configs/ko.json](configs/ko.json)
----
+  * If you train with japanese dataset, refer [configs/ja.json](configs/ja.json)
+  * If you train with korean dataset, refer [configs/ko.json](configs/ko.json)
 
+- You can download and use [pretrained_model](https://github.com/kdrkdrkdr/JK-VITS/releases).
+  * If you train with korean dataset, use korean_pretrained_dataset (Completed)
+  * If you train with japanese dataset, use japanese_pretrained_dataset (Work In Process)
+
+---
 ## Training Exmaple
 ```sh
 python train.py -c configs/ft.json -m ft
@@ -93,7 +97,6 @@ python train.py -c configs/ft.json -m ft
 ---
 ## Inference Exmaple
 See [inference.ipynb](inference.ipynb)
-
 
 
 ---
