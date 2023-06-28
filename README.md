@@ -4,16 +4,6 @@ This Repository can speak Japanese even if you train with Korean dataset, and ca
 By transcribing pronunciation from Japanese to Korean and Korean to Japanese, the unstable voice produced when using the existing multilingual ipa cleaners has been improved.
 
 
-
-## Table of Contents 
-- [Prerequisites](#prerequisites)
-- [Installation](#installation)
-- [Prepare_Datasets](#Prepare_Datasets)
-- [Usage](#usage)
-- [Inference](#inference)
-- [References](#References)
-
-
 ## Pre-requisites
 - A Windows/Linux system with a minimum of `16GB` RAM.
 - A GPU with at least `12GB` of VRAM.
@@ -82,8 +72,9 @@ python preprocess.py --filelists filelists/train.txt filelists/val.txt
   * If you train with korean dataset, refer [configs/ko.json](configs/ko.json)
 
 - You can download and use [pretrained_model](https://github.com/kdrkdrkdr/JK-VITS/releases) to finetuning.
-  * If you train with korean dataset, use [korean_pretrained_dataset](https://github.com/kdrkdrkdr/JK-VITS/releases/tag/korean_pretrained_model) (Completed)
   * If you train with japanese dataset, use [japanese_pretrained_dataset](https://github.com/kdrkdrkdr/JK-VITS/releases/tag/japanese_pretrained_model) (Work In Process)
+  * If you train with korean dataset, use [korean_pretrained_dataset](https://github.com/kdrkdrkdr/JK-VITS/releases/tag/korean_pretrained_model) (Completed)
+  
 
 - Write Transcripts.
   * If you train with japanese dataset
