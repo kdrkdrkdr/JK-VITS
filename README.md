@@ -1,5 +1,4 @@
-# JK-VITS
-Bilingual-TTS (Japanese and Korean) <br>
+# JK-VITS: Bilingual-TTS (Japanese and Korean)
 This Repository can speak Japanese even if you train with Korean dataset, and can speak Korean even if you train with Japanese dataset. <br>
 By transcribing pronunciation from Japanese to Korean and Korean to Japanese, the unstable voice produced when using the existing multilingual ipa cleaners has been improved.
 
