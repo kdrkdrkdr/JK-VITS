@@ -1,6 +1,6 @@
 # JK-VITS
-Bilingual-TTS (Japanese and Korean)
-This Repository can speak Japanese even if you train with Korean dataset, and can speak Korean even if you train with Japanese dataset.
+Bilingual-TTS (Japanese and Korean) <br>
+This Repository can speak Japanese even if you train with Korean dataset, and can speak Korean even if you train with Japanese dataset. <br>
 By transcribing pronunciation from Japanese to Korean and Korean to Japanese, the unstable voice produced when using the existing multilingual ipa cleaners has been improved.
 
 
@@ -62,30 +62,31 @@ pip install -U pyopenjtalk==0.2.0 --no-build-isolation
 .wav files are okay. The sample rate of the audio must be 44100 Hz.
 
 
+- Set configs.
+  * If you train with japanese dataset, refer [configs/ja.json](configs/ja.json)
+  * If you train with korean dataset, refer [configs/ko.json](configs/ko.json)
+  * Make a config file by referring to these two files.
+
+
+- Write Transcripts.
+  * If you train with japanese dataset / [reference](filelists/ja_train.txt)
+  ```
+  path/to/XXX.wav|[JA]こんいちわ。[JA]
+  ```
+  * If you train with korean dataset / [reference](filelists/ko_train.txt)
+  ```
+  path/to/XXX.wav|[KO]안녕하세요.[KO]
+  ```
+
 - Preprocessing (g2p) for your own datasets. Preprocessed phonemes for your dataset.
 ```sh
 python preprocess.py --filelists filelists/train.txt filelists/val.txt
 ```
 
-- Set configs.
-  * If you train with japanese dataset, refer [configs/ja.json](configs/ja.json)
-  * If you train with korean dataset, refer [configs/ko.json](configs/ko.json)
 
 - You can download and use [pretrained_model](https://github.com/kdrkdrkdr/JK-VITS/releases) to finetuning.
   * If you train with japanese dataset, use [japanese_pretrained_dataset](https://github.com/kdrkdrkdr/JK-VITS/releases/tag/japanese_pretrained_model) (Work In Process)
   * If you train with korean dataset, use [korean_pretrained_dataset](https://github.com/kdrkdrkdr/JK-VITS/releases/tag/korean_pretrained_model) (Completed)
-  
-
-- Write Transcripts.
-  * If you train with japanese dataset
-  ```
-  path/to/XXX.wav|[JA]こんいちわ。[JA]
-  ```
-  * If you train with korean dataset
-  ```
-  path/to/XXX.wav|[KO]안녕하세요.[KO]
-  ```
-
 
 ---
 ## Training Exmaple
