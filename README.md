@@ -84,18 +84,20 @@ python preprocess.py --filelists filelists/train.txt filelists/val.txt
 
 
 - You can download and use [pretrained_model](https://github.com/kdrkdrkdr/JK-VITS/releases) to finetuning.
-  * If you train with japanese dataset, use [japanese_pretrained_dataset](https://github.com/kdrkdrkdr/JK-VITS/releases/tag/japanese_pretrained_model) (Work In Process)
+  * If you train with japanese dataset, use [japanese_pretrained_dataset](https://github.com/kdrkdrkdr/JK-VITS/releases/tag/japanese_pretrained_model) (Completed)
   * If you train with korean dataset, use [korean_pretrained_dataset](https://github.com/kdrkdrkdr/JK-VITS/releases/tag/korean_pretrained_model) (Completed)
 
 ---
 ## Training Exmaple
 ```sh
-python train.py -c configs/ft.json -m ft
+python train.py -c configs/ko.json -m ko
 ```
 
 ---
 ## Inference Exmaple
 See [inference.ipynb](inference.ipynb)
+
+Also, You can listen [korean samples](samples/kss_infer.wav) and [japanese samples](samples/jsut_infer.wav).
 
 
 ---
